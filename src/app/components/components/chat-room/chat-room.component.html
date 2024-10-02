@@ -1,0 +1,66 @@
+<div class="parent">
+  <section class="msger">
+    <!-- Header with Logout button -->
+    <header class="msger-header">
+      <div class="msger-header-title">
+        <i class="fas fa-comment-alt"></i> SimpleChat
+      </div>
+      <div class="msger-header-options">
+        <button (click)="onLogout()">Logout</button> <!-- Logout button -->
+      </div>
+    </header>
+
+    <!-- User Selection Section -->
+    <div class="user-list">
+      <h3>Select a user to chat:</h3>
+    
+      <!-- User Cards Layout -->
+      <div class="user-cards">
+        <!-- Loop through filteredUsers and display username instead of email -->
+        <div *ngFor="let user of filteredUsers" class="user-card" (click)="selectUser(user.email)">
+          <!-- User Information -->
+          <div class="user-info">
+            <h4>{{ user.username }}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Section -->
+    <main class="msger-chat">
+      <!-- Display chat with the selected user -->
+      <div class="chatting-with" *ngIf="selectedUser">
+        <h4>Chatting with: {{ getUserNameByEmail(selectedUser) }}</h4>
+      </div>
+
+      <!-- Loop through messages and display them -->
+      <div *ngFor="let msg of messages" [ngClass]="{'left-msg': msg.user !== currentUser, 'right-msg': msg.user === currentUser}">
+        
+        <!-- Left/Right message image (based on user) -->
+        <div class="msg-img"
+          [style.background-image]="msg.user === currentUser 
+            ? 'url(https://cdn-icons-png.flaticon.com/512/149/149071.png)' 
+            : 'url(https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes.png'">
+        </div>
+
+        <!-- Message Bubble -->
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <!-- Display 'You' if currentUser, otherwise get username by email -->
+            <div class="msg-info-name">{{ msg.user === currentUser ? 'You' : getUserNameByEmail(msg.user) }}</div>
+            <div class="msg-info-time">{{ msg.time }}</div> <!-- Display message time -->
+          </div>
+          <div class="msg-text">
+            {{ msg.message }}
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Chat Input Form -->
+    <form [formGroup]="chatForm" (ngSubmit)="sendMessage()" class="msger-inputarea">
+      <input type="text" formControlName="message" placeholder="Type a message..." />
+      <button type="submit" [disabled]="chatForm.invalid" class="msger-send-btn">Send</button>
+    </form>
+  </section>
+</div>
