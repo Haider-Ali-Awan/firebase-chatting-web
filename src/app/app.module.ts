@@ -14,13 +14,15 @@ import { LoginComponent } from './components/components/login/login.component';
 import { RegisterComponent } from './components/components/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChatRoomComponent } from './components/components/chat-room/chat-room.component';
+import { LoaderComponent } from './components/components/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ChatRoomComponent
+    ChatRoomComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

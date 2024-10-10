@@ -9,6 +9,19 @@
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
   
+
+  a{
+
+    text-decoration: none;
+  }
+
+
+  .dropdown-item:hover{
+
+    cursor: pointer;
+
+  }
+
   h2 {
     text-align: center;
     margin-bottom: 1.5rem;

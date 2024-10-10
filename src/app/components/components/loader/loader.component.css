@@ -1,0 +1,61 @@
+/* loader.css */
+.loader-container {
+    position: fixed; /* Fixed positioning to stay in view */
+    top: 0; /* Align to the top of the screen */
+    left: 0; /* Align to the left of the screen */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: light background with transparency */
+    z-index: 999; /* Ensure it appears above other content */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.loader {
+    position: fixed; /* Fixed position for the entire screen */
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Adjust positioning to center correctly */
+    width: 54px; /* Width of the loader */
+    height: 54px; /* Height of the loader */
+    border-radius: 10px; /* Optional: rounded corners */
+    z-index: 9999; /* Ensures loader is on top */
+}
+
+.loader div {
+    width: 8%; /* Width of each bar */
+    height: 24%; /* Height of each bar */
+    background: rgb(128, 128, 128); /* Color of each bar */
+    position: absolute;
+    left: 50%; /* Align to the center */
+    top: 30%; /* Slightly below the center */
+    opacity: 0; /* Start with no opacity */
+    border-radius: 50px; /* Rounded bars */
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); /* Shadow for the bars */
+    animation: fade458 1s linear infinite; /* Animation for bars */
+}
+
+/* Animation for the loader bars */
+@keyframes fade458 {
+    from {
+        opacity: 1; /* Fade in */
+    }
+    to {
+        opacity: 0.25; /* Fade out */
+    }
+}
+
+/* Define each bar's rotation */
+.loader .bar1 { transform: rotate(0deg) translate(0, -130%); animation-delay: 0s; }
+.loader .bar2 { transform: rotate(30deg) translate(0, -130%); animation-delay: -1.1s; }
+.loader .bar3 { transform: rotate(60deg) translate(0, -130%); animation-delay: -1s; }
+.loader .bar4 { transform: rotate(90deg) translate(0, -130%); animation-delay: -0.9s; }
+.loader .bar5 { transform: rotate(120deg) translate(0, -130%); animation-delay: -0.8s; }
+.loader .bar6 { transform: rotate(150deg) translate(0, -130%); animation-delay: -0.7s; }
+.loader .bar7 { transform: rotate(180deg) translate(0, -130%); animation-delay: -0.6s; }
+.loader .bar8 { transform: rotate(210deg) translate(0, -130%); animation-delay: -0.5s; }
+.loader .bar9 { transform: rotate(240deg) translate(0, -130%); animation-delay: -0.4s; }
+.loader .bar10 { transform: rotate(270deg) translate(0, -130%); animation-delay: -0.3s; }
+.loader .bar11 { transform: rotate(300deg) translate(0, -130%); animation-delay: -0.2s; }
+.loader .bar12 { transform: rotate(330deg) translate(0, -130%); animation-delay: -0.1s; }

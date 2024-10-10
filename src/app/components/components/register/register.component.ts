@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/authService/services/auth.service'
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  isLoading = false; // Loader visibility flag
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router : Router) {
     this.registerForm = this.fb.group({
@@ -25,13 +26,16 @@ export class RegisterComponent implements OnInit {
 // register.component.ts
   onRegister() {
     if (this.registerForm.valid) {
+      this.isLoading = true ;
       const { email, password , username} = this.registerForm.value;
       this.authService.register(email, password, username).then(() => {
         console.log('Registration successful');
+      this.isLoading = false ;
         this.router.navigate(['./chat'])
         // You may want to navigate to another page or display a success message
       }).catch(err => {
         console.error('Registration failed:', err.message || err);
+        this.isLoading = false ;
         // Handle the error here (e.g., display it in the UI)
       });
     } 

@@ -14,6 +14,13 @@ export class ChatService {
     this.db.list(`/chats/${roomId}`).push({ user, message, timestamp });
   }
 
+
+  // Clear messages from the chat for a specific roomId
+clearMessages(roomId: string) {
+  return this.db.list(`/chats/${roomId}`).remove();
+}
+
+  
   // Get messages from the database
   getMessages(roomId: string): Observable<any[]> {
     return this.db.list(`/chats/${roomId}`, ref => ref.orderByChild('timestamp')).valueChanges();

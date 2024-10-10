@@ -1,3 +1,7 @@
+
+<app-loader  [isLoading]="isLoading"></app-loader>
+
+
 <div class="form-container">
   <h2>Login to Your Account</h2>
   
@@ -8,7 +12,10 @@
     <div class="form-group">
       <input formControlName="password" type="password" placeholder="Password" required class="form-control" />
     </div>
-    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+    <button type="submit" [disabled]="loginForm.invalid || isLoading" class="btn btn-primary">
+      <span *ngIf="isLoading">Loading...</span>
+      <span *ngIf="!isLoading">Login</span>
+    </button>
   </form>
 
   <p>Don't have an account? 
